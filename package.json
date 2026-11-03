@@ -1,0 +1,13 @@
+{
+  "name": "hello-practice",
+  "version": "1.0.0",
+  "description": "Practice app for Docker, GitHub Actions and Atlas",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "check-db": "node check-atlas.js"
+  },
+  "dependencies": {
+    "mongodb": "^6.0.0"
+  }
+}

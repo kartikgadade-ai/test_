@@ -1,0 +1,29 @@
+# A workflow = instructions for GitHub's automation robot.
+
+name: Hello Workflow
+
+# WHEN to run: on every push to main, and also when you click the "Run workflow" button
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# WHAT to do
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest   # GitHub gives you a fresh Linux machine
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Say hello
+        run: echo "Hello from GitHub Actions!"
+
+      - name: Show who triggered this
+        run: echo "Triggered by ${{ github.actor }} on branch ${{ github.ref_name }}"
+
+      - name: Build the Docker image (same step your real deploy does)
+        run: docker build -t hello-practice .
+
+      - name: List the image
+        run: docker images hello-practice
